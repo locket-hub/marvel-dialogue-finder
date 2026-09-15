@@ -78,7 +78,7 @@ def line_finder():
     for i in range(22):
         i += 1
         text = userOptions(i)
-        directory = '/Users/escalators/Documents/Stuff/friendly-doodle/MCUDialogue/MCUDialogueTexts/' + text
+        directory = 'marvel-dialogue-finder/MCUDialogueTexts/' + text
         with open(directory, 'rb') as fp:
             line = fp.readline()
             line_string = line.decode()
