@@ -28,6 +28,17 @@ def userOptions(text_number):
     }
     return switcher.get(text_number, 'Nothing')
 
+def validator():
+    while True:
+        try:
+            text_number = int(input('Choose a title: '))
+            break
+        except ValueError:
+            print("Please type in a valid title number! ")
+            
+    text = userOptions(text_number)
+    return text
+
 
 def general_reader():
     options = '1) Ant-Man And The Wasp\n' \
@@ -55,10 +66,9 @@ def general_reader():
               '23) Thor\n'
 
     print(options)
-    text_number = int(input('Choose a title: '))
-    text = userOptions(text_number)
+    text = validator()
 
-    directory = '/Users/escalators/Documents/Stuff/friendly-doodle/MCUDialogue/MCUDialogueTexts/' + text
+    directory = 'marvel-dialogue-finder/MCUDialogueTexts/' + text
     with open(directory, 'rb') as fp:
         line = fp.readline()
         line_string = line.decode()  # Can decode in "utf-8" if needed
@@ -94,7 +104,7 @@ def line_finder():
 
 
 def menu():
-    print("Dialogue from every MCU movie up until Far From Home")
+    print("Dialogue from every MCU movie up to Far From Home")
     user_input = int(input("What do you wish to do with it? \n1) Line Finder \n2) General Reader \n"))
     if user_input == 1:
         line_finder()
@@ -102,11 +112,27 @@ def menu():
         general_reader()
 
 
-class MCUReader:
-    pass  # placeholder for future code
-
-
 if __name__ == '__main__':
+    marvel_ascii = """⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣴⣶⣶⣾⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣠⣴⣿⣿⣿⠿⠿⠛⣻⣿⣿⣿⣿⣿⣿⣿⣦⣄⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⡿⠛⠉⠀⠀⠀⣰⣿⣿⣿⠟⣿⣿⣿⣿⢿⣿⣷⣦⠀⠀⠀⠀
+⠀⠀⢠⣾⣿⡟⠁⠀⠀⠀⠀⠀⣰⣿⣿⣿⡟⠀⣿⣿⣿⣿⠀⠈⢻⣿⣷⡄⠀⠀
+⠀⢠⣿⣿⠏⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⡟⠀⠀⣿⣿⣿⣿⠀⠀⠀⠹⣿⣿⡄⠀
+⢀⣿⣿⠏⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⡿⠁⠀⠀⣿⣿⣿⣿⠀⠀⠀⠀⠸⣿⣿⡄
+⣸⣿⡟⠀⠀⠀⠀⠀⠀⢰⣿⣿⣿⣿⠃⠀⠀⠀⣿⣿⣿⣿⠀⠀⠀⠀⠀⢻⣿⣇
+⣿⣿⡇⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⠇⠀⠀⠀⠀⣈⠻⣿⣿⠀⠀⠀⠀⠀⢸⣿⣿
+⣿⣿⡇⠀⠀⠀⠀⢠⣿⣿⣿⣿⣯⣤⣤⣤⣤⣤⣿⣶⣌⠻⠀⠀⠀⠀⠀⢸⣿⣿
+⢻⣿⣇⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⣸⣿⡟
+⠘⣿⣿⡄⠀⢠⣿⣿⣿⣿⡿⠿⠿⠿⠿⠿⠿⢿⣿⣿⠟⢋⠀⠀⠀⠀⢠⣿⣿⠃
+⠀⠹⣿⡿⢀⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠸⠋⣡⣴⣿⠀⠀⠀⣠⣿⣿⠏⠀
+⠀⠀⠙⢁⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠚⠛⠛⠛⠀⢀⣴⣿⣿⠋⠀⠀
+⠀⠀⢀⣾⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣿⣿⠟⠁⠀⠀⠀
+⠀⢀⣾⣿⣿⣿⣿⠏⣰⣿⣶⣦⣤⣤⣤⣤⣤⣤⣴⣶⣿⣿⡿⠛⠁⠀⠀⠀⠀⠀
+⢀⣾⣿⣿⣿⣿⡟⠀⠈⠙⠛⠻⠿⠿⠿⠿⠿⠿⠟⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀
+"""
+    print(marvel_ascii)
     while running:
         menu()
         continue_on = str(input("Would you like to continue? Y or N\n"))
